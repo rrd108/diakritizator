@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset='utf-8' />
-	<title>Diakritizátor 4.0</title>
+	<title>Diakritizátor 1.5</title>
 	<link rel="stylesheet" media="all" href="diakritizator.css?v=130208"/>
 	<link rel="stylesheet" href="tooltipster.css" type="text/css" media="all" title="Screen">
 	<script src="jquery.js"></script>
