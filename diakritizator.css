@@ -24,3 +24,31 @@ section{
 ul{
 	list-style-type: none;
 }
+
+.diakritizatorTip {
+	border-radius: 5px; 
+	border: 2px solid #000;
+	background: #4c4c4c;
+	color: #fff;
+}
+
+/* Use this next selector to style things like font-size and line-height: */
+.diakritizatorTip .tooltipster-content {
+	font-size: 14px;
+	line-height: 16px;
+	padding: 0.7em 0;
+}
+
+.diakritizatorTip .tooltipster-content ul{
+	margin: 0;
+	padding: 0;
+}
+
+.diakritizatorTip .tooltipster-content li{
+	padding: 0 0.5em;
+	cursor: pointer;
+}
+
+.diakritizatorTip .tooltipster-content li:hover{
+	background-color: #999;
+}

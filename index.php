@@ -4,7 +4,9 @@
 	<meta charset='utf-8' />
 	<title>Diakritizátor 4.0</title>
 	<link rel="stylesheet" media="all" href="diakritizator.css?v=130208"/>
+	<link rel="stylesheet" href="tooltipster.css" type="text/css" media="all" title="Screen">
 	<script src="jquery.js"></script>
+	<script src="jquery.tooltipster.js"></script>
 	<script src="diakritizator.js?v=130305"></script>
 </head>
 <body>
@@ -56,7 +58,15 @@ try{
 				if(ctype_upper($chr)){
 					$row['diakritikus'] = mb_convert_case($row['diakritikus'], MB_CASE_TITLE, "UTF-8");
 				}
-				$cserelt = '<span class="c">' . $row['diakritikus'] . '</span>';
+				//$cserelt = '<span class="c">' . $row['diakritikus'] . '</span>';
+				$title = '<ul>';
+				$title .= '<li>' .  $szo . '</li>';
+				$szavak = explode('|', $row['diakritikus']);
+				foreach($szavak as $_szo){
+					$title .= '<li>' . $_szo . '</li>';
+				}
+				$title .= '</ul>';
+				$cserelt = '<span class="c tooltip" title="'.$title.'">' . $szavak[0] . '</span>';
 				$szoveg = preg_replace('/\b'.$szo.'\b/u', $cserelt, $szoveg);
 			}
 		}
