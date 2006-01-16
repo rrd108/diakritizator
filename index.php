@@ -17,8 +17,7 @@ if($szoveg = $_REQUEST['forras']){
 	<a href="https://code.google.com/p/diakritizator/issues/entry">Hibajelentés</a>
 	<h2>Jelmagyarázat</h2>
 	<ul>
-		<li><span class="_c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> cserélt</li>
-		<li><span class="_v">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> visszaállított</li>
+		<li><span class="_c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> cserélhető szó</li>
 	</ul>
 	<h3>Infók</h3>
 	<p>A <span class="_c">kiemelt hátterű</span> szavakra rámutatva meg lehet nézni a szó lehetséges variációit és rákattintva lehet váltogatni az állapotukat.</p>
