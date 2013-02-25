@@ -1,0 +1,26 @@
+.c, ._c{
+	background-color: #fe8;
+}
+
+.v, ._v{
+	background-color: #dde;
+}
+
+.c, .v{
+	cursor: pointer;
+}
+
+aside{
+	display: block;
+	float: right;
+	width: 30%;
+}
+
+section{
+	display: block;
+	width: 70%;
+}
+
+ul{
+	list-style-type: none;
+}

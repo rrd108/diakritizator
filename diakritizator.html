@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>Diakritizátor</title>
+	<script>
+	var __w = {
+		'Krisna' :'Kṛṣṇa',
+		'Narada' :'Nārada',
+		'Vyasadeva' :'Vyāsadeva',
+		'murti' :'mūrti',
+		'Narayana' :'Nārāyaṇa',
+		'brahmana' :'brāhmaṇa',
+		'Vrindavana' :'Vṛndāvana',
+		'dhama' :'dhāma',
+		'bhakta' :'bhakta',
+		'Bhagavan' :'Bhagavān',
+		'Krisna-tudat' :'Kṛṣṇa-tudat',
+		'Paramatma' :'Paramātmā',
+		'gaudiya' :'gauḍīya',
+		'vaisnava' :'vaiṣṇava',
+		'sampradaya' :'sampradāya',
+		'kumara' :'kumāra',
+		'sankara' :'śaṅkara',
+		'sri' :'śrī',
+		'asvameda-yajna' :'aśvamedha-yajña',
+		'atmarama-sloka' :'ātmārāma- śloka'
+	}
+
+	function getText() {
+		var textField = document.getElementById('text');
+		var text = textField.value;
+		return text;
+	}
+	function setText(text) {
+		var textField = document.getElementById('text');
+		textField.value = text;
+	}
+	function diakritizal() {
+		var k;
+		var re;
+		var text = getText();
+		for(k in __w){
+			re = new RegExp(k,"g");
+			text = text.replace(re, __w[k]);	
+		}
+		setText(text);
+	}
+	</script>
+</head>
+<body>
+Teszteld ezzel pl:<br>A bölcs Vyasadeva arról írt amikor Narada meglátogatta Krisna fővárosát. Láthatta a templomokban Narayana murti formáját és a palotákban Krisna személyes formáját.<br><br>
+Szöveg: <br>
+<textarea id="text" rows="15" cols="100"></textarea>
+<br>
+<input type="button" onclick="diakritizal();" value="diaktritizátor">
+</body>
+</html>
