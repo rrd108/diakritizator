@@ -2,10 +2,10 @@
 <html>
 <head>
 	<meta charset='utf-8' />
-	<title>Diakritizátor 3.1</title>
+	<title>Diakritizátor 4.0</title>
 	<link rel="stylesheet" media="all" href="diakritizator.css?v=130208"/>
-	<script src="prototype.js"></script>
-	<script src="diakritizator.js?v=130208"></script>
+	<script src="jquery.js"></script>
+	<script src="diakritizator.js?v=130225"></script>
 </head>
 <body>
 <?php

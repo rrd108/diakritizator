@@ -21,20 +21,18 @@ diakritizator = {
 	visszacserelt : {},
 
 	init : function(){
-		var cserelt = $$('.c');
-		cserelt.each(function(elem){
-			Event.observe(elem, 'click', diakritizator.visszacsere);
-			Event.observe(elem, 'mouseover', diakritizator.addTitle);
-		});
+		var cserelt = $('.c');
+		cserelt.bind('click', diakritizator.visszacsere);
+		cserelt.bind('mouseover', diakritizator.addTitle);
 	},
 
 	addTitle : function(e){
-		var elem = e.target;
-		elem.title = 'Szó cseréje erre: ';
-		if(elem.hasClassName('c'))
-			elem.title += '"' + diakritizator.removeDiakritiks(elem.textContent) + '"';
-		else if(elem.hasClassName('v'))
-			elem.title += '"' + diakritizator.putbackDiakritiks(elem.textContent) + '"';
+		var elem = $(e.target);
+		var title = 'Szó cseréje erre: ';
+		if(elem.hasClass('c'))
+			elem.prop('title', title + '"' + diakritizator.removeDiakritiks(elem.text()) + '"');
+		else if(elem.hasClass('v'))
+			elem.prop('title', title + '"' + diakritizator.putbackDiakritiks(elem.text()) + '"');
 	},
 	
 	removeDiakritiks : function(text){
@@ -53,28 +51,28 @@ diakritizator = {
 
 	visszacsere : function(e){
 		//vissza kell cserélni a diakritizált karaktereket
-		var elem = e.target;
-		text = diakritizator.removeDiakritiks(elem.textContent);
+		var elem = $(e.target);
+		text = diakritizator.removeDiakritiks(elem.text());
 		
-		elem.stopObserving('click', diakritizator.visszacsere);
-		diakritizator.visszacserelt[text] = elem.textContent;		// Hare : Hāre
-		Event.observe(elem, 'click', diakritizator.visszaallit);
+		elem.unbind('click');
+		diakritizator.visszacserelt[text] = elem.text();		// Hare : Hāre
+		elem.bind('click', diakritizator.visszaallit);
 		
-		elem.textContent = text;
-		elem.removeClassName('c');
-		elem.addClassName('v');
+		elem.text(text);
+		elem.removeClass('c');
+		elem.addClass('v');
 	},
 	
 	visszaallit : function(e){
-		var elem = e.target;
-		elem.textContent = diakritizator.putbackDiakritiks(elem.textContent);
-		elem.removeClassName('v');
-		elem.addClassName('c');
-		elem.stopObserving('click', diakritizator.visszaallit);
-		Event.observe(elem, 'click', diakritizator.visszacsere);
+		var elem = $(e.target);
+		elem.text(diakritizator.putbackDiakritiks(elem.text()));
+		elem.removeClass('v');
+		elem.addClass('c');
+		elem.unbind('click');
+		elem.bind('click', diakritizator.visszacsere);
 	}
 }
 
-document.observe('dom:loaded', function(){
+$(document).ready(function(){
 	diakritizator.init();
 });
