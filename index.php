@@ -46,7 +46,7 @@ try{
 	
 	mb_internal_encoding('UTF-8');
 	mb_regex_encoding('UTF-8');
-	$szavak = mb_split("\W", $szoveg);
+	$szavak = array_unique(mb_split("\W", $szoveg));
 	foreach($szavak as $szo){
 		if(mb_strlen($szo)){
 			//szerepel-e a szó a cserélendők adatbázisában?
@@ -57,7 +57,8 @@ try{
 					$row['diakritikus'] = mb_convert_case($row['diakritikus'], MB_CASE_TITLE, "UTF-8");
 				}
 				$cserelt = '<span class="c">' . $row['diakritikus'] . '</span>';
-				$szoveg = preg_replace('/'.$szo.'/u', $cserelt, $szoveg);
+				$szoveg = preg_replace('/\b'.$szo.'\b/u', $cserelt, $szoveg);
+				
 			}
 		}
 	}
@@ -67,7 +68,7 @@ catch(PDOException $e){
    print "Error!: " . $e->getMessage() . "<br/>";
    die();
 }
-print '<p contenteditable>' . nl2br($szoveg) . '</p>';
+print '<p contenteditable id="ujSzoveg">' . nl2br($szoveg) . '</p>';
 ?>
 </section>
 </body>
