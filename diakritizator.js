@@ -1,6 +1,6 @@
-diakritizator = {
+(function($){
 
-	c : {
+	var c = {
 		'ā' : 'a', 		'Ā' : 'A', 
 		'ī' : 'i', 		'Ī' : 'I',
 		'ū' : 'u', 		'Ū' : 'U',
@@ -12,67 +12,63 @@ diakritizator = {
 		'ṅ' : 'n', 		'Ṅ' : 'N',
 		'ṇ' : 'n', 		'Ṇ' : 'N',
 		'ñ' : 'n', 		'Ñ' : 'N',
-		'ṛ' : 'ri', 	'Ṛ' : 'R',
+		'ṛ' : 'ri', 	'Ṛ' : 'Ri',
 		'ṝ' : 'r', 		'Ṝ' : 'R',
 		'ṣ' : 's', 		'Ṣ' : 'S',
 		'ś' : 's', 		'Ś' : 'S',
-		'ṭ' : 't',  	'Ṭ' : 'T'},
+		'ṭ' : 't',  	'Ṭ' : 'T'};
 	
-	visszacserelt : {},
+	var visszacserelt = {};
 
-	init : function(){
+	$(function(){
 		var cserelt = $('.c');
-		cserelt.bind('click', diakritizator.visszacsere);
-		cserelt.bind('mouseover', diakritizator.addTitle);
-	},
+		cserelt.click(visszacsere);
+		cserelt.mouseover(addTitle);
+	});
 
-	addTitle : function(e){
+	function addTitle(e){
 		var elem = $(e.target);
 		var title = 'Szó cseréje erre: ';
 		if(elem.hasClass('c'))
-			elem.prop('title', title + '"' + diakritizator.removeDiakritiks(elem.text()) + '"');
+			elem.prop('title', title + '"' + removeDiakritiks(elem.text()) + '"');
 		else if(elem.hasClass('v'))
-			elem.prop('title', title + '"' + diakritizator.putbackDiakritiks(elem.text()) + '"');
-	},
+			elem.prop('title', title + '"' + putbackDiakritiks(elem.text()) + '"');
+	}
 	
-	removeDiakritiks : function(text){
+	function removeDiakritiks(text){
 		var k;
 		var re;
-		for(k in diakritizator.c){
+		for(k in c){
 			re = new RegExp(k,"g");
-			text = text.replace(re, diakritizator.c[k]);	
+			text = text.replace(re, c[k]);	
 		}
 		return text;
-	},
+	}
 	
-	putbackDiakritiks : function(text){
-		return(diakritizator.visszacserelt[text]);
-	},
+	function putbackDiakritiks(text){
+		return(visszacserelt[text]);
+	}
 
-	visszacsere : function(e){
+	function visszacsere(e){
 		//vissza kell cserélni a diakritizált karaktereket
 		var elem = $(e.target);
-		text = diakritizator.removeDiakritiks(elem.text());
+		text = removeDiakritiks(elem.text());
 		
 		elem.unbind('click');
-		diakritizator.visszacserelt[text] = elem.text();		// Hare : Hāre
-		elem.bind('click', diakritizator.visszaallit);
+		visszacserelt[text] = elem.text();		// Hare : Hāre
+		elem.bind('click', visszaallit);
 		
 		elem.text(text);
 		elem.removeClass('c');
 		elem.addClass('v');
-	},
+	}
 	
-	visszaallit : function(e){
+	function visszaallit(e){
 		var elem = $(e.target);
-		elem.text(diakritizator.putbackDiakritiks(elem.text()));
+		elem.text(putbackDiakritiks(elem.text()));
 		elem.removeClass('v');
 		elem.addClass('c');
 		elem.unbind('click');
-		elem.bind('click', diakritizator.visszacsere);
+		elem.bind('click', visszacsere);
 	}
-}
-
-$(document).ready(function(){
-	diakritizator.init();
-});
+})(jQuery);
