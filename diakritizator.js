@@ -37,7 +37,7 @@
 	
 	function addTitle(e){
 		var elem = $(e.target);
-		if(elem.attr('title').indexOf('|') > 0){
+		if(elem.attr('title').indexOf('|') > 0){		//todo: mi van ha ha nincs pipe?
 			elem.prop('title', TITLE_LEHETSEGES + elem.attr('title'));
 		}
 		else{
@@ -69,12 +69,15 @@
 
 	function createTitle(elemek){
 		elemek.each(function(index){
+			var reOriginal = '';
 			var originalText = $(this).text();
 			var pipePos = originalText.indexOf('|');
-			var firstTextForm = originalText.substr(0,pipePos);
-			$(this).text(firstTextForm);
-			var reOriginal = removeDiakritiks(firstTextForm);
-			reOriginal = (reOriginal == firstTextForm) ? '' : reOriginal + '|';
+			if(pipePos > 0){
+				var firstTextForm = originalText.substr(0,pipePos);
+				$(this).text(firstTextForm);
+				reOriginal = removeDiakritiks(firstTextForm);
+				reOriginal = (reOriginal == firstTextForm) ? '' : reOriginal + '|';
+			}
 			$(this).prop('title', reOriginal + originalText);
 			});
 	}

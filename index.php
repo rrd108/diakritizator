@@ -5,7 +5,7 @@
 	<title>Diakritizátor 4.0</title>
 	<link rel="stylesheet" media="all" href="diakritizator.css?v=130208"/>
 	<script src="jquery.js"></script>
-	<script src="diakritizator.js?v=130225"></script>
+	<script src="diakritizator.js?v=130305"></script>
 </head>
 <body>
 <?php
@@ -58,7 +58,6 @@ try{
 				}
 				$cserelt = '<span class="c">' . $row['diakritikus'] . '</span>';
 				$szoveg = preg_replace('/\b'.$szo.'\b/u', $cserelt, $szoveg);
-				
 			}
 		}
 	}
