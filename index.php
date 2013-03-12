@@ -19,7 +19,7 @@ if($szoveg = $_REQUEST['forras']){
 		<li><span class="_v">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> visszaállított</li>
 	</ul>
 	<h3>Infók</h3>
-	<p>A kiemelt hátterű szavakra rámutatva meg lehet nézni a szó lehetséges variációit és rákattintva lehet váltogatni az állapotukat.</p>
+	<p>A <span class="_c">kiemelt hátterű</span> szavakra rámutatva meg lehet nézni a szó lehetséges variációit és rákattintva lehet váltogatni az állapotukat.</p>
 	<p>A nem kiemelt szavakra kattintva a teljes szöveg szerkeszthetővé válik.</p>
 	<h2>Figyelmeztetés</h2>
 	<p>Ez az alkalmazás <strong>NEM</strong> egy szanszkrit editori eszköz. Lehetnek <em>(és vannak is)</em> benne hibák, az átalakított szöveg nem feltétlenül helyes. Persze igyekszünk a <a href="https://code.google.com/p/diakritizator/issues/entry">visszajelzések</a> alapján javítani, fejleszteni.</p>
