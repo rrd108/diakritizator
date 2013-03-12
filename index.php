@@ -19,7 +19,7 @@ if($szoveg = $_REQUEST['forras']){
 		<li><span class="_v">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> visszaállított</li>
 	</ul>
 	<h3>Infók</h3>
-	<p>A kiemelt hátterű szavakra kattintva lehet váltogatni az állapotukat.</p>
+	<p>A kiemelt hátterű szavakra rámutatva meg lehet nézni a szó lehetséges variációit és rákattintva lehet váltogatni az állapotukat.</p>
 	<p>A nem kiemelt szavakra kattintva a teljes szöveg szerkeszthetővé válik.</p>
 	<h2>Figyelmeztetés</h2>
 	<p>Ez az alkalmazás <strong>NEM</strong> egy szanszkrit editori eszköz. Lehetnek <em>(és vannak is)</em> benne hibák, az átalakított szöveg nem feltétlenül helyes. Persze igyekszünk a <a href="https://code.google.com/p/diakritizator/issues/entry">visszajelzések</a> alapján javítani, fejleszteni.</p>
@@ -40,8 +40,8 @@ if($szoveg = $_REQUEST['forras']){
 	</form>
 <?php
 try{
-   $dbh = new PDO('mysql:host=localhost;dbname=diakritizalo', 'root', '');
-	//$dbh = new PDO('mysql:host=localhost;dbname=reseller10_diak', 'reseller10_djzr', '5nU38NP6');
+   //$dbh = new PDO('mysql:host=localhost;dbname=diakritizalo', 'root', '');
+	$dbh = new PDO('mysql:host=localhost;dbname=reseller10_diak', 'reseller10_djzr', '5nU38NP6');
 	$dbh->query('SET NAMES "utf8"');
 	
 	mb_internal_encoding('UTF-8');
