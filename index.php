@@ -1,7 +1,7 @@
 <?php
 try{
-   $dbh = new PDO('mysql:host=localhost;dbname=diakritizalo', 'root', '');
-	//$dbh = new PDO('mysql:host=localhost;dbname=reseller10_diak', 'reseller10_djzr', '5nU38NP6');
+   $//dbh = new PDO('mysql:host=localhost;dbname=diakritizalo', 'root', '');
+	$dbh = new PDO('mysql:host=localhost;dbname=reseller10_diak', 'reseller10_djzr', '5nU38NP6');
 	$dbh->query('SET NAMES "utf8"');
 	
 	mb_internal_encoding('UTF-8');
@@ -59,7 +59,7 @@ catch(PDOException $e){
 	<ol>
 	<?php
 	try{
-		foreach($dbh->query('SELECT diakritikus FROM szoparok ORDER BY lekerve DESC LIMIT 10') as $row){
+		foreach($dbh->query('SELECT diakritikus FROM szoparok ORDER BY lekerve DESC, sima ASC LIMIT 10') as $row){
 			if($pipePos = strpos($row['diakritikus'],'|')){
 				$szo = substr($row['diakritikus'], 0, $pipePos);
 			}
