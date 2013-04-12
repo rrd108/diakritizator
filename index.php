@@ -1,4 +1,11 @@
 <?php
+
+$bbtBooksBetuk = array('§', '¦', 'ˇ', '¨', '¤', 'ḷ', 'ḹ', '°', 'ṅ', 'Ł', 'ń', 'Ą', 'ṝ', '˘', 'Ş', '±',
+								'Ý', 'ľ', 'Ū', 'Ḍ', 'Ḥ', 'Ḷ', 'Ḹ', 'Ṁ', 'Ṅ', 'Ṇ', 'Ñ', 'Ṛ', 'Ṝ', 'Þ', 'Ľ', 'ç');
+
+$utf8diakritikusBetuk = array('ā', 'ī', 'ū', 'ḍ', 'ḥ', 'ḷ', 'ḹ', 'ṁ', 'ṅ', 'ṇ', 'ñ', 'ṛ', 'ṝ', 'ṣ', 'ś', 'ṭ',
+										'Ā', 'Ī', 'Ū', 'Ḍ', 'Ḥ', 'Ḷ', 'Ḹ', 'Ṁ', 'Ṅ', 'Ṇ', 'Ñ', 'Ṛ', 'Ṝ', 'Ṣ', 'Ś', 'Ṭ');
+
 try{
    //$dbh = new PDO('mysql:host=localhost;dbname=diakritizalo', 'root', '');
 	$dbh = new PDO('mysql:host=localhost;dbname=reseller10_diak', 'reseller10_djzr', '5nU38NP6');
@@ -8,6 +15,8 @@ try{
 	mb_regex_encoding('UTF-8');
 
 	$szoveg = $_REQUEST['forras'];
+	//ed (latin) karakterek kezelése
+	$szoveg = str_replace($bbtBooksBetuk, $utf8diakritikusBetuk, $szoveg);
 
 	$szavak = array_unique(mb_split("\W", $szoveg));
 	foreach($szavak as $szo){
@@ -45,7 +54,7 @@ catch(PDOException $e){
 <html>
 <head>
 	<meta charset='utf-8' />
-	<title>Diakritizátor 1.6</title>
+	<title>Diakritizátor 2.0</title>
 	<link rel="stylesheet" media="all" href="diakritizator.css?v=130208"/>
 	<link rel="stylesheet" href="tooltipster.css" type="text/css" media="all" title="Screen">
 	<script src="jquery.js"></script>
@@ -86,6 +95,7 @@ catch(PDOException $e){
 			<li><span class="_c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> cserélhető szó</li>
 		</ul>
 		<h3>Infók</h3>
+		<p>A szövegmezőbe bemásolt sima szöveget, vagy a régi Fólióból (BBtBooks) kimásolt szöveget alakítja diakritizált formára.</p>
 		<p>A <span class="_c">kiemelt hátterű</span> szavakra rámutatva meg lehet nézni a szó lehetséges variációit és rákattintva lehet váltogatni az állapotukat.</p>
 		<p>A nem kiemelt szavakra kattintva a teljes szöveg szerkeszthetővé válik.</p>
 		<h2>Figyelmeztetés</h2>
