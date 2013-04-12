@@ -6,6 +6,9 @@ $bbtBooksBetuk = array('§', '¦', 'ˇ', '¨', '¤', 'ḷ', 'ḹ', '°', 'ṅ', 
 $utf8diakritikusBetuk = array('ā', 'ī', 'ū', 'ḍ', 'ḥ', 'ḷ', 'ḹ', 'ṁ', 'ṅ', 'ṇ', 'ñ', 'ṛ', 'ṝ', 'ṣ', 'ś', 'ṭ',
 										'Ā', 'Ī', 'Ū', 'Ḍ', 'Ḥ', 'Ḷ', 'Ḹ', 'Ṁ', 'Ṅ', 'Ṇ', 'Ñ', 'Ṛ', 'Ṝ', 'Ṣ', 'Ś', 'Ṭ');
 
+$latinBetuk = array('a', 'i', 'u', 'd', 'h', 'l', 'l', 'm', 'n', 'n', 'n', 'r', 'r', 's', 's', 't',
+							'A', 'I', 'U', 'D', 'H', 'L', 'L', 'M', 'N', 'N', 'N', 'R', 'R', 'S', 'S', 'T');
+
 try{
    //$dbh = new PDO('mysql:host=localhost;dbname=diakritizalo', 'root', '');
 	$dbh = new PDO('mysql:host=localhost;dbname=reseller10_diak', 'reseller10_djzr', '5nU38NP6');
@@ -16,7 +19,7 @@ try{
 
 	$szoveg = $_REQUEST['forras'];
 	//ed (latin) karakterek kezelése
-	$szoveg = str_replace($bbtBooksBetuk, $utf8diakritikusBetuk, $szoveg);
+	$szoveg = str_replace($bbtBooksBetuk, $latinBetuk, $szoveg);
 
 	$szavak = array_unique(mb_split("\W", $szoveg));
 	foreach($szavak as $szo){
