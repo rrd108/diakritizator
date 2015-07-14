@@ -13,7 +13,7 @@ try{
    //$dbh = new PDO('mysql:host=localhost;dbname=diakritizalo', 'root', '');
 	$dbh = new PDO('mysql:host=localhost;dbname=reseller10_diak', 'reseller10_djzr', '5nU38NP6');
 	$dbh->query('SET NAMES "utf8"');
-	
+
 	mb_internal_encoding('UTF-8');
 	mb_regex_encoding('UTF-8');
 
@@ -26,9 +26,9 @@ try{
 		if(mb_strlen($szo)){
 			//szerepel-e a szó a cserélendők adatbázisában?
 			foreach($dbh->query('SELECT * FROM szoparok WHERE sima = "' . $szo . '"') as $row){
-				
+
 				$dbh->query('UPDATE szoparok SET lekerve = (lekerve + 1) WHERE sima = "'.$szo.'"');
-				
+
 				//nagybetűs vagy kisbetűs
 				$chr = mb_substr($szo, 0, 1, "UTF-8");
 				if(ctype_upper($chr)){
@@ -66,7 +66,7 @@ catch(PDOException $e){
 </head>
 <body>
 <aside>
-	
+
 	<h2>Top 10</h2>
 	<ol>
 	<?php
@@ -88,11 +88,11 @@ catch(PDOException $e){
 	}
 	?>
 	</ol>
-	
+
 	<?php
 	if($szoveg){
 	?>
-		<a href="https://code.google.com/p/diakritizator/issues/entry">Hibajelentés</a>
+		<a href="https://github.com/rrd108/diakritizator/issues">Hibajelentés</a>
 		<h2>Jelmagyarázat</h2>
 		<ul>
 			<li><span class="_c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> cserélhető szó</li>
@@ -102,7 +102,7 @@ catch(PDOException $e){
 		<p>A <span class="_c">kiemelt hátterű</span> szavakra rámutatva meg lehet nézni a szó lehetséges variációit és rákattintva lehet váltogatni az állapotukat.</p>
 		<p>A nem kiemelt szavakra kattintva a teljes szöveg szerkeszthetővé válik.</p>
 		<h2>Figyelmeztetés</h2>
-		<p>Ez az alkalmazás <strong>NEM</strong> egy szanszkrit editori eszköz. Lehetnek <em>(és vannak is)</em> benne hibák, az átalakított szöveg nem feltétlenül helyes. Persze igyekszünk a <a href="https://code.google.com/p/diakritizator/issues/entry">visszajelzések</a> alapján javítani, fejleszteni.</p>
+		<p>Ez az alkalmazás <strong>NEM</strong> egy szanszkrit editori eszköz. Lehetnek <em>(és vannak is)</em> benne hibák, az átalakított szöveg nem feltétlenül helyes. Persze igyekszünk a <a href="https://github.com/rrd108/diakritizator/issues">visszajelzések</a> alapján javítani, fejleszteni.</p>
 	<?php
 	}
 	?>
