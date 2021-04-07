@@ -1,54 +1,113 @@
-.c, ._c{
-	background-color: #fe8;
+body {
+  font-family: 'Quicksand', sans-serif;
+
+  color: #fff;
+  margin: 0;
+  font-size: 1.2rem;
+  background-color: #0c4978;
 }
 
-.v, ._v{
-	background-color: #dde;
+header {
+	background-color: #2e81c4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 auto;
 }
 
-.c, .v{
-	cursor: pointer;
+header h1 {
+  margin: 0;
 }
 
-aside{
-	display: block;
-	float: right;
-	width: 30%;
+header img {
+  height: 10rem;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
-section{
-	display: block;
-	width: 70%;
+main {
+  padding: 1rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
-ul{
-	list-style-type: none;
+section,
+aside {
+  padding: 1rem;
+}
+
+aside {
+  max-width: 30vw;
+}
+
+input[type='submit'] {
+  background-color: #2e81c4;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+}
+
+input[type='submit']:hover {
+  box-shadow: 0.3rem 0.3rem 0.3rem #4c4c4c;
+  cursor: pointer;
+}
+
+a {
+  color: #b1d4f2;
+}
+
+textarea {
+	width: 100%;
+}
+
+.c,
+._c {
+  background-color: #b1d4f2;
+  color: #000;
+}
+
+.v,
+._v {
+  background-color: #dde;
+}
+
+.c,
+.v {
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
 }
 
 .diakritizatorTip {
-	border-radius: 5px; 
-	border: 2px solid #000;
-	background: #4c4c4c;
-	color: #fff;
+  border-radius: 5px;
+  border: 2px solid #000;
+  background: #4c4c4c;
+  color: #fff;
 }
 
 /* Use this next selector to style things like font-size and line-height: */
 .diakritizatorTip .tooltipster-content {
-	font-size: 14px;
-	line-height: 16px;
-	padding: 0.7em 0;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 0.7em 0;
 }
 
-.diakritizatorTip .tooltipster-content ul{
-	margin: 0;
-	padding: 0;
+.diakritizatorTip .tooltipster-content ul {
+  margin: 0;
+  padding: 0;
 }
 
-.diakritizatorTip .tooltipster-content li{
-	padding: 0 0.5em;
-	cursor: pointer;
+.diakritizatorTip .tooltipster-content li {
+  padding: 0 0.5em;
+  cursor: pointer;
 }
 
-.diakritizatorTip .tooltipster-content li:hover{
-	background-color: #999;
+.diakritizatorTip .tooltipster-content li:hover {
+  background-color: #999;
 }
