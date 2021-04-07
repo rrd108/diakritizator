@@ -11,7 +11,6 @@ $latinBetuk = array('a', 'i', 'u', 'd', 'h', 'l', 'l', 'm', 'n', 'n', 'n', 'r', 
 
 try{
   $dbh = new PDO('mysql:host=localhost;dbname=diakritizator', 'root', '123');
-	//$dbh = new PDO('mysql:host=localhost;dbname=reseller10_diak', 'reseller10_djzr', '5nU38NP6');
 	$dbh->query('SET NAMES "utf8"');
 
 	mb_internal_encoding('UTF-8');
@@ -58,6 +57,7 @@ catch(PDOException $e){
 
 <head>
   <meta charset='utf-8' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Diakritizátor 2.0</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap" rel="stylesheet">
